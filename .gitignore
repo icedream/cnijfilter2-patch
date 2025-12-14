@@ -1,0 +1,4 @@
+cnijfilter2*/
+*.tar*
+*.new
+rpmbuild/

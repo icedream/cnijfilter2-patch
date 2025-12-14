@@ -1,0 +1,62 @@
+--- cnijfilter2-source-5.90-1/cnijfilter2.spec	2019-07-23 03:07:21.000000000 +0200
++++ cnijfilter2-source-5.90-1.new/cnijfilter2.spec	2025-12-14 12:44:50.120626210 +0100
+@@ -7,7 +7,7 @@
+ %define _cupsbindir /usr/lib/cups
+ %define _cupsbindir64 /usr/lib64/cups
+ 
+-%define _prefix	/usr/local
++%define _prefix	/usr
+ %define _bindir %{_prefix}/bin
+ %define _libdir /usr/lib%{_is64}
+ %define _ppddir /usr
+@@ -23,8 +23,8 @@
+ Vendor: CANON INC.
+ Group: Applications/Publishing
+ Source0: cnijfilter2-source-%{version}-%{release}.tar.gz
+-BuildRequires: cups-devel
+-Requires:  cups
++BuildRequires: cups-devel glib2-devel libusb-compat-0.1-devel gettext-devel libxml2-devel
++Requires:  cups glib2 libusb-compat-0.1 gettext libxml2
+ 
+ 
+ %description
+@@ -33,6 +33,9 @@
+ printers operating under the CUPS (Common UNIX Printing System) environment.
+ 
+ 
++%global debug_package %{nil}
++
++
+ %prep
+ %setup -q -n  cnijfilter2-source-%{version}-%{release}
+ 
+@@ -49,7 +52,7 @@
+ popd
+ 
+ pushd cnijbe2
+-    ./autogen.sh --prefix=/usr --enable-progpath=%{_bindir} 
++    ./autogen.sh --prefix=/usr --enable-progpath=%{_bindir} LDFLAGS="-no-pie" CFLAGS="-fno-pie"
+ 	make
+ popd
+ 
+@@ -59,17 +62,17 @@
+ popd
+ 
+ pushd rastertocanonij
+-    ./autogen.sh --prefix=/usr --enable-progpath=%{_bindir}
++    ./autogen.sh --prefix=/usr --enable-progpath=%{_bindir} LDFLAGS="-no-pie" CFLAGS="-fno-pie"
+ 	make
+ popd
+ 
+ pushd tocanonij
+-    ./autogen.sh --prefix=%{_prefix}
++    ./autogen.sh --prefix=%{_prefix} LDFLAGS="-no-pie" CFLAGS="-fno-pie"
+ 	make
+ popd
+ 
+ pushd tocnpwg
+-    ./autogen.sh --prefix=%{_prefix}
++    ./autogen.sh --prefix=%{_prefix} LDFLAGS="-no-pie" CFLAGS="-fno-pie"
+ 	make
+ popd
+ 
