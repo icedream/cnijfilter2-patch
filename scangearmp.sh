@@ -7,7 +7,7 @@ set -o pipefail
 BASEPATH=$(pwd)
 
 # deps
-sudo dnf install -y rpm-build gcc g++ autoconf automake libtool
+sudo dnf install -y rpm-build gcc g++ autoconf automake libtool gtk2-devel
 
 # download
 curl --fail -sLo ./scangearmp2-source-3.90-1.tar.gz "https://gdlp01.c-wss.com/gds/7/0100010487/01/scangearmp2-source-3.90-1.tar.gz"
