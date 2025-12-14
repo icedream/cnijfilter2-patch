@@ -7,7 +7,7 @@ set -o pipefail
 BASEPATH=$(pwd)
 
 # deps
-sudo dnf install -y fedora-packager gcc g++ autoconf automake libtool cups-devel glib2-devel glib-gettextize libusb-compat-0.1-devel gettext-devel libxml2-devel glib-gettextize
+sudo dnf install -y rpm-build gcc g++ autoconf automake libtool cups-devel glib2-devel libusb-compat-0.1-devel gettext-devel libxml2-devel
 
 # download
 curl --fail -sLo ./cnijfilter2-source-5.90-1.tar.gz "https://gdlp01.c-wss.com/gds/4/0100010484/01/cnijfilter2-source-5.90-1.tar.gz"

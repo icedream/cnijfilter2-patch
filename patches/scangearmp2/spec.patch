@@ -1,0 +1,11 @@
+--- scangearmp2-source-3.90-1/scangearmp2.spec	2019-06-24 05:05:43.000000000 +0200
++++ scangearmp2-source-3.90-1.new/scangearmp2.spec	2025-12-14 13:16:30.649102916 +0100
+@@ -4,7 +4,7 @@
+ %define _arc  %(getconf LONG_BIT)
+ %define _is64 %(if [ `getconf LONG_BIT` = "64" ] ; then  printf "64";  fi)
+ 
+-%define _prefix /usr/local
++%define _prefix /usr
+ %define _bindir %{_prefix}/bin
+ %define _libdir /usr/lib%{_is64}
+ 
